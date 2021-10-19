@@ -40,9 +40,13 @@ export const Tmpl = ({ jsx, propz, transformOptions }) => {
   const result = transform(jsx, transformOptions)
   // eslint-disable-next-line no-eval
   const CompiledComponent = eval(result.code)
-  return (
-    <ErrorBoundary>
-      <CompiledComponent {...propz} />
-    </ErrorBoundary>
-  )
+  try {
+    return (
+      <ErrorBoundary>
+        <CompiledComponent {...propz} />
+      </ErrorBoundary>
+    )
+  } catch(e){
+    return <span>Error {e}</span>
+  }
 }
