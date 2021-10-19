@@ -1,10 +1,13 @@
 {
-  "name": "jsx-to-react",
+  "name": "@ad31m0/jsx-to-react",
   "version": "1.0.0",
   "description": "jsx to react component",
   "author": "ad31m0m0",
   "license": "MIT",
-  "repository": "ad31m0m0/jsx-to-react",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ad31m0m0/jsx-to-react.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -20,7 +23,6 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom"
-
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -51,5 +53,12 @@
   ],
   "dependencies": {
     "@babel/standalone": "^7.15.8"
+  },
+  "bugs": {
+    "url": "https://github.com/ad31m0m0/jsx-to-react/issues"
+  },
+  "homepage": "https://github.com/ad31m0m0/jsx-to-react#readme",
+  "directories": {
+    "example": "example"
   }
 }
