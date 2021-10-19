@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { Tmpl } from '.'
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(Tmpl).toBeTruthy()
   })
 })

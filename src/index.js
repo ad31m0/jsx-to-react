@@ -1,11 +1,10 @@
-import React from 'react';
-import standalone from '@babel/standalone';
-
+import React from 'react'
+import { transform } from '@babel/standalone'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { error: null, errorInfo: null };
+    super(props)
+    this.state = { error: null, errorInfo: null }
   }
 
   componentDidCatch(error, errorInfo) {
@@ -29,22 +28,21 @@ class ErrorBoundary extends React.Component {
             {this.state.errorInfo.componentStack}
           </details>
         </div>
-      );
+      )
     }
     // Normally, just render children
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export const Tmpl = ({ jsx, propz }) => {
-  try {
-    const result = standalone.transform(jsx, {presets: ["env", "react"]});
-    const RR = eval(result.code);
-    return (  <ErrorBoundary>
-      <RR {...propz} />
-    </ErrorBoundary>);
-  }catch(e){
-    return <div>Error {JSON.stringify(e)}</div>
-  }
-
-};
+export const Tmpl = ({ jsx, propz, transformOptions }) => {
+  if (!transformOptions) transformOptions = { presets: ['env', 'react'] }
+  const result = transform(jsx, transformOptions)
+  // eslint-disable-next-line no-eval
+  const CompiledComponent = eval(result.code)
+  return (
+    <ErrorBoundary>
+      <CompiledComponent {...propz} />
+    </ErrorBoundary>
+  )
+}
